@@ -151,7 +151,7 @@ jobs:
           name: Create Backend Infrastructure 
           command: |
             aws cloudformation deploy \
-              --template-file .circleci/files/backend.yml \
+              --template-file .circleci/files/backend.yml \       
               --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:5}\s
               --region us-east-1
 
@@ -159,7 +159,7 @@ jobs:
           name: Create Front Infrastructure 
           command: |
             aws cloudformation deploy \
-              --template-file .circleci/files/frontend.yml \
+              --template-file .circleci/files/frontend.yml \  
               --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:5}\
               --region us-east-1
 
