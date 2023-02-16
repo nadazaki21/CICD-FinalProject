@@ -172,9 +172,9 @@ jobs:
             cat ip.txt
 
       - persist_to_workspace:
-      root: ~/
-      paths: 
-        - project/.circleci/ansible/inventory.txt
+          root: ~/
+          paths: 
+            - project/.circleci/ansible/inventory.txt
                 
 
     
