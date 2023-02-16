@@ -9,7 +9,7 @@ commands:
            name: Destroy environment 
            when: on_fail
            command: |
-             aws cloudformation delete-stack --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:5}
+             aws cloudformation delete-stack --stack-name backend-${CIRCLE_WORKFLOW_ID:0:5}
 
   destroy_environment_frontend:
     steps:
@@ -17,7 +17,7 @@ commands:
            name: Destroy environment 
            when: on_fail
            command: |
-             aws cloudformation delete-stack --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:5}
+             aws cloudformation delete-stack --stack-name frontend-${CIRCLE_WORKFLOW_ID:0:5}
 
 
   revert-migrations:
@@ -152,7 +152,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/backend.yml \       
-              --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:5} \
+              --stack-name backend-${CIRCLE_WORKFLOW_ID:0:5} \
               --region us-east-1
 
       - run:
@@ -160,7 +160,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/frontend.yml \  
-              --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:5} \
+              --stack-name frontend-${CIRCLE_WORKFLOW_ID:0:5} \
               --region us-east-1
 
       - run: pwd
