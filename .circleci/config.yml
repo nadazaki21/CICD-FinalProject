@@ -151,10 +151,10 @@ jobs:
           name: Create Backend Infrastructure 
           command: |
             aws cloudformation deploy \
-              --template-file .circleci/files/backend.yml \    
-              --stack-name "backend" \
-              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:5}"  \
-              --tags project=udapeople
+            --template-file .circleci/files/backend.yml \    
+            --stack-name "backend" \
+            --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:5}"  \
+            --tags project=udapeople
       - run:
           name: Create Front Infrastructure 
           command: |
