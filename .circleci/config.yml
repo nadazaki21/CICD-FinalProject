@@ -150,12 +150,12 @@ jobs:
       - run:
           name: Create Backend Infrastructure 
           command: |
-            aws cloudformation deploy --template-file .circleci/files/backend.yml   --stack-name backend-${CIRCLE_WORKFLOW_ID:0:5}   --region us-east-1
+            aws cloudformation deploy --template-file /home/nadazaki/CICD/final-project/cdond-c3-projectstarter/.circleci/files/backend.yml   --stack-name backend-${CIRCLE_WORKFLOW_ID:0:5}   --region us-east-1
 
       - run:
           name: Create Front Infrastructure 
           command: |
-            aws cloudformation deploy --template-file .circleci/files/frontend.yml   --stack-name frontend-${CIRCLE_WORKFLOW_ID:0:5}  --region us-east-1
+            aws cloudformation deploy --template-file /home/nadazaki/CICD/final-project/cdond-c3-projectstarter/.circleci/files/frontend.yml   --stack-name frontend-${CIRCLE_WORKFLOW_ID:0:5}  --region us-east-1
 
       - run: pwd
 
