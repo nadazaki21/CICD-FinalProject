@@ -146,7 +146,7 @@ jobs:
     docker:
       - image: amazon/aws-cli
     steps:
-      - checkout
+      
       - run:
           name: Create Backend Infrastructure 
           command: |
