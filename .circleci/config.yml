@@ -154,10 +154,10 @@ jobs:
           # command: |
 
             
-      # - run:
-      #     name: Create Front Infrastructure 
-      #     command: |
-      #       aws cloudformation deploy --template-file frontend.yml   --stack-name "frontend-${CIRCLE_WORKFLOW_ID:0:5}"  --region us-east-1
+      - run:
+          name: Create Front Infrastructure 
+          command: |
+            aws cloudformation deploy --template-file frontend.yml   --stack-name "frontend-${CIRCLE_WORKFLOW_ID:0:5}"  --region us-east-1
 
       - run: pwd
       - run: yum install -y tar gzip
