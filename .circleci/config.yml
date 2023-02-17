@@ -179,7 +179,7 @@ jobs:
           command: |
            aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'    --output text >> ~/project/.circleci/ansible/inventory.txt
       
-      - run: cat inventory.txt
+      - run: cat ~/inventory.txt
   
       
       - destroy_environment_backend
