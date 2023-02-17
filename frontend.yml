@@ -11,7 +11,7 @@ Resources:
   WebsiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !ImportValue udapeople-${WorkflowID}
+      BucketName: !ImportValue WorkflowID
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
