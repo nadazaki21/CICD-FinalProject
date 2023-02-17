@@ -9,7 +9,7 @@ commands:
            name: Destroy environment 
            when: on_fail
            command: |
-             aws cloudformation delete-stack --stack-name backend-${CIRCLE_WORKFLOW_ID:0:5}
+             aws cloudformation delete-stack --stack-name backend-${CIRCLE_WORKFLOW_ID:0:5}  
 
   destroy_environment_frontend:
     steps:
@@ -154,13 +154,13 @@ jobs:
           # command: |
 
             
-      # - run:
-      #     name: Create Front Infrastructure 
-      #     command: |
-      #       aws cloudformation deploy --template-file frontend.yml   --stack-name "frontend-${CIRCLE_WORKFLOW_ID:0:5}"  --region us-east-1
+      - run:
+          name: Create Front Infrastructure 
+          command: |
+            aws cloudformation deploy --template-file frontend.yml   --stack-name "frontend-${CIRCLE_WORKFLOW_ID:0:5}"  --region us-east-1
 
       - run: pwd
-
+      - run: sudo apt install tar 
       - run:
           name: Prepare file
           command: |
