@@ -1,6 +1,10 @@
 Description: >
   UdaPeople frontend stack.
 
+Parameters:
+  WorkflowID:
+    Description: Unique identifier.
+    Type: String
 
 
 Resources:
