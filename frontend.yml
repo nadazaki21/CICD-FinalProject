@@ -12,7 +12,7 @@ Resources:
   WebsiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: Uda
+      BucketName: uda
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
