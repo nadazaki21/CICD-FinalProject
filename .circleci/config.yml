@@ -149,7 +149,7 @@ jobs:
       
       - run: pwd
       - run: ls -la
-      - run: aws cloudformation deploy --template-file backend.yml    --stack-name "backend-${CIRCLE_WORKFLOW_ID:0:5}"   --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:5}"  --tags project=udapeople
+      - run: aws cloudformation deploy --template-file /backend.yml   --stack-name "backend-${CIRCLE_WORKFLOW_ID:0:5}"   --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:5}"  --tags project=udapeople
           # name: Create Backend Infrastructure 
           # command: |
 
@@ -157,7 +157,7 @@ jobs:
       - run:
           name: Create Front Infrastructure 
           command: |
-            aws cloudformation deploy --template-file frontend.yml   --stack-name "frontend-${CIRCLE_WORKFLOW_ID:0:5}"  --region us-east-1
+            aws cloudformation deploy --template-file frontend.yml  --stack-name "frontend-${CIRCLE_WORKFLOW_ID:0:5}"  --region us-east-1
 
       - run: pwd
 
