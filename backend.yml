@@ -5,13 +5,13 @@ Parameters:
   ID:
     Description: Unique identifier.
     Type: String
-    Default: !ImportValue WorkflowID
+    
 
 Resources:
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Sub Uda-${ID}
+      GroupName: Uda
       GroupDescription: Allow port 22 and port 3030.
       SecurityGroupIngress:
         - IpProtocol: tcp
