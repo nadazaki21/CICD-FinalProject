@@ -207,10 +207,10 @@ jobs:
           name: Install dependencies
           command: |
             
-            sudo apt intsall python3 
+            yum install -y python3 
             
             echo " installingg ansible"
-            yum install -ysoftware-properties-common 
+            yum install -y software-properties-common 
             yum-config-manager --add-repo=ppa:ansible/ansible --yes --update 
             yum install -y ansible 
         
