@@ -171,7 +171,8 @@ jobs:
       #     paths: [ ~/project/inventory.txt]
       #     key: ok
 
-      - run: cd ~/project/
+      - run: cd ~/project
+
       - run:  mkdir inv
      
     
@@ -183,9 +184,10 @@ jobs:
            aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> ~/project/inv/inventory.txt
       
       - persist_to_workspace:
-        root: ~/project/inv
-        paths: 
-          - inventory.txt
+
+          root: ~/project/inv
+          paths: 
+            - inventory.txt
 
       - run: cat ~/project/inv/inventory.txt
       - run: pwd 
