@@ -216,7 +216,7 @@ jobs:
       - run: ansible --version 
       
       - attach_workspace:
-          at: ~/project/
+          at: ~/project
     
       - run: cat ~/project/inventory.txt
     
