@@ -211,7 +211,7 @@ jobs:
             
             echo " installingg ansible"
            
-            yum-config-manager --add-repo=ppa:ansible/ansible --yes --update 
+            
             yum install -y ansible 
         
       - run: ansible --version 
@@ -445,3 +445,4 @@ workflows:
 
 
             # yum install -y software-properties-common 
+            ##yum-config-manager --add-repo=ppa:ansible/ansible --yes --update 
