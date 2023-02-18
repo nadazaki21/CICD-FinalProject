@@ -193,7 +193,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: cimg/base:2023.02
+      - image: amazon/aws-cli 
     steps:
       - checkout 
       - add_ssh_keys:
@@ -208,10 +208,7 @@ jobs:
           command: |
             
             sudo apt intsall python3 
-            echo "installing AWS CLI "
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo ./aws/install
+            
             echo " installingg ansible"
             sudo apt install software-properties-common 
             sudo add-apt-repository --yes --update ppa:ansible/ansible
@@ -439,3 +436,9 @@ workflows:
       #     requires: [smoke-test]
       # - cleanup:
       #     requires: [cloudfront-update]
+
+
+      # echo "installing AWS CLI "
+            # curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            # unzip awscliv2.zip
+            # sudo ./aws/install
