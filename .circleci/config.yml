@@ -172,10 +172,10 @@ jobs:
           key: ok
 
        
-      - persist_to_workspace:
-          root: ~/project
-          paths: 
-            - inventory.txt
+      # - persist_to_workspace:
+      #     root: ~/project
+      #     paths: 
+      #       - inventory.txt
                 
 
     
@@ -232,13 +232,13 @@ jobs:
             # python3 -m pip install --user ansible
         
       - run: ansible --version 
-      - run: sudo su 
+      
       
       - restore_cache:
           keys: [ok]
 
-      - attach_workspace:
-          at: ~/project
+      # - attach_workspace:
+      #     at: ~/project
     
       - run: cat ~/project/inventory.txt
     
