@@ -210,7 +210,7 @@ jobs:
             yum install -y python3 
             
             echo " installingg ansible"
-            yum install -y software-properties-common 
+           
             yum-config-manager --add-repo=ppa:ansible/ansible --yes --update 
             yum install -y ansible 
         
@@ -442,3 +442,6 @@ workflows:
             # curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             # unzip awscliv2.zip
             # sudo ./aws/install
+
+
+            # yum install -y software-properties-common 
