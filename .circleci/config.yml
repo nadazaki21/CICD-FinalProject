@@ -251,6 +251,8 @@ jobs:
             #      curl https://kvdb.io/95oHjy4Yvcu4f6gDXNZr6j/migration_$\{CIRCLE_WORKFLOW_ID:0:5} -d 1  
                     
             #     fi
+            #     curl --insecure  https://kvdb.io/95oHjy4Yvcu4f6gDXNZr6j/migration_$\{CIRCLE_WORKFLOW_ID:0:5}      
+
 
 #      - destroy_environment_backend
 
@@ -260,13 +262,36 @@ jobs:
 
 #   deploy-frontend:
 #     docker:
-#       - image: amazon/aws-cli 
-#     steps:
-#       # Checkout code from git
-#       - run:
-#           name: Install dependencies
-#           command: |
-#             # your code here
+#       - image: cimg/base:2023.02
+    steps:
+      - checkout 
+      - add_ssh_keys:
+              
+          fingerprints: 
+            
+            - "55:f3:3d:67:45:24:b3:9f:b8:17:3f:c4:75:fd:e2:07"
+      
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt install -y tar gzip
+            echo "installing AWS CLI "
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
+            echo " installingg ansible"
+            sudo apt install software-properties-common 
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible 
+            echo "installing pyton3"
+            sudo apt install python3
+        
+      - run: ansible --version 
+      
+      - attach_workspace:
+          at: ~/
+    
+      - run: cat ~/project/.circleci/ansible/inventory.txt
 #       - run:
 #           name: Get backend url
 #           command: |
