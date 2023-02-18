@@ -216,7 +216,9 @@ jobs:
               curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
               unzip awscliv2.zip
               sudo ./aws/install
-              sudo apt install software-properties-common 
+
+              echo " installing ansible"
+              
               sudo add-apt-repository --yes --update ppa:ansible/ansible
               sudo apt install ansible 
 
