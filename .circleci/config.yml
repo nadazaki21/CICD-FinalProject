@@ -219,7 +219,7 @@ jobs:
 
               echo " installing ansible"
               
-              sudo add-apt-repository --yes --update ppa:ansible/ansible
+              
               sudo apt install ansible 
 
             # yum install -y python3 
