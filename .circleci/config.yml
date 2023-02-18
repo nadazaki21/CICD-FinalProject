@@ -164,32 +164,35 @@ jobs:
       - run: pwd
       - run: yum install -y tar gzip
       
-      - restore_cache:
-          keys: [ok]
+      # - restore_cache:
+      #     keys: [ok]
 
-      - save_cache:
-          paths: [ ~/project/inventory.txt]
-          key: ok
+      # - save_cache:
+      #     paths: [ ~/project/inventory.txt]
+      #     key: ok
 
        
-      # - persist_to_workspace:
-      #     root: ~/project
-      #     paths: 
-      #       - inventory.txt
+      - persist_to_workspace:
+          root: ~/project/inv
+          paths: 
+            - inventory.txt
                 
 
     
       - run:
           name: Add back-end ip to ansible inventory
           command: |
-           echo "[web]" > ~/project/inventory.txt
-           aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> ~/project/inventory.txt
+           mkdir inv
+           echo "[web]" > ~/project/inv/inventory.txt
+           aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> ~/project/inv/inventory.txt
            
 
-      - run: cat ~/project/inventory.txt
+      - run: cat ~/project/inv/inventory.txt
       - run: pwd 
       - run: ls
-      - run: cd ~/project/
+
+      - run: cd ~/project/inv
+      - run: pwd 
       - run: ls   
   
       
@@ -237,19 +240,19 @@ jobs:
       - run: ansible --version 
       
       
-      - restore_cache:
-          keys: [ok]
+      # - restore_cache:
+      #     keys: [ok]
 
-      # - attach_workspace:
-      #     at: ~/project
+      - attach_workspace:
+          at: ~/project/inv
     
-      - run: cat ~/project/inventory.txt
+      - run: cat ~/project/inv/inventory.txt
     
 
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i ~/project/inventory.txt  ~/project/configure-server.yml
+            ansible-playbook -i ~/project/inv/inventory.txt  ~/project/configure-server.yml
 
       - destroy_environment_backend
 
