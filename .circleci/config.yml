@@ -226,7 +226,7 @@ jobs:
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i ~/project/inventory.txt  ~/project/configure-server.yml
+            ansible-playbook -i /root/project/inventory.txt  /root/project/configure-server.yml
 
       - destroy_environment_backend
 
