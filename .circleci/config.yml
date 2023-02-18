@@ -164,6 +164,13 @@ jobs:
       - run: pwd
       - run: yum install -y tar gzip
       
+      - restore_cache:
+          keys: [ok]
+          
+      - save_cache:
+        paths: [ ~/project/inventory.txt]
+        key: ok
+
        
       - persist_to_workspace:
           root: ~/project
@@ -193,7 +200,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: cimg/base:2023.02
+      - image: circleci/node:13.8.0
     steps:
       - checkout 
       - add_ssh_keys:
@@ -202,22 +209,22 @@ jobs:
             
             - "55:f3:3d:67:45:24:b3:9f:b8:17:3f:c4:75:fd:e2:07"
       
-      - run:  sudo apt install tar gzip  #yum install -y tar gzip
+      - run:  sudo apt intsall tar gzip #yum install -y tar gzip
       - run:
           name: Install dependencies
           command: |
-
-            echo "installing AWS CLI "
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo ./aws/install
-
-            sudo apt install python3
               
+              echo "installing AWS CLI "
+              curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+              unzip awscliv2.zip
+              sudo ./aws/install
+
+
+            
               
-            sudo apt install software-properties-common 
-            sudo add-apt-repository --yes --update ppa:ansible/ansible
-            sudo apt install ansible 
+              sudo apt install software-properties-common 
+              sudo add-apt-repository --yes --update ppa:ansible/ansible
+              sudo apt install ansible 
 
             # yum install -y python3 
 
@@ -229,7 +236,10 @@ jobs:
             # python3 -m pip install --user ansible
         
       - run: ansible --version 
-      
+
+      - restore_cache:
+          keys: [ok]
+
       - attach_workspace:
           at: ~/project
     
@@ -452,6 +462,4 @@ workflows:
       #     requires: [cloudfront-update]
 
 
-      
-
-            
+           
