@@ -202,7 +202,7 @@ jobs:
             
             - "55:f3:3d:67:45:24:b3:9f:b8:17:3f:c4:75:fd:e2:07"
       
-      - run:  sudo apt intsall tar gzip #yum install -y tar gzip
+      - run:  sudo apt install tar gzip #yum install -y tar gzip
       - run:
           name: Install dependencies
           command: |
