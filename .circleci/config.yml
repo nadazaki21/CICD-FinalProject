@@ -192,7 +192,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - Simage: cimg/base:2023.02
+      - image: cimg/base:2023.02
     steps:
       - checkout 
       - add_ssh_keys:
