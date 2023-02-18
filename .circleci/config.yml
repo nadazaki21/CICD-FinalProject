@@ -217,7 +217,7 @@ jobs:
       - run: ansible --version 
       
       - attach_workspace:
-          sat: ~/
+          at: ~/
     
       - run: cat ~/project/.circleci/ansible/inventory.txt
     
