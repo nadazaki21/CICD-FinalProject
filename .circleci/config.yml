@@ -232,7 +232,8 @@ jobs:
             # python3 -m pip install --user ansible
         
       - run: ansible --version 
-
+      - run: sudo su 
+      
       - restore_cache:
           keys: [ok]
 
