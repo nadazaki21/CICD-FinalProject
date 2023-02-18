@@ -148,7 +148,7 @@ jobs:
     steps:
       - checkout 
       
-      - run: ls -la
+      
       
       - run:
           name: Create Backend Infrastructure 
@@ -161,7 +161,7 @@ jobs:
           command: |
             aws cloudformation deploy --template-file frontend.yml   --stack-name "frontend-${CIRCLE_WORKFLOW_ID:0:5}"  --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:5}"   --tags project=udapeople 
 
-      - run: pwd
+      
       - run: yum install -y tar gzip
       
       # - restore_cache:
