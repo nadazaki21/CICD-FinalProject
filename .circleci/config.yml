@@ -166,10 +166,10 @@ jobs:
       
       - restore_cache:
           keys: [ok]
-          
+
       - save_cache:
-        paths: [ ~/project/inventory.txt]
-        key: ok
+          paths: [ ~/project/inventory.txt]
+          key: ok
 
        
       - persist_to_workspace:
