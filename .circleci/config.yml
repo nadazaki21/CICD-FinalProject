@@ -256,12 +256,7 @@ jobs:
           # - restore_cache:
           # keys: [backend-build]
         
-        - run:
-          export BACKEND_IP=$(cat )
-          export API_URL="http://${BACKEND_IP}:3030"
-          echo "API_URL = ${API_URL}"
-          echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
-          cat frontend/.env
+       
 
 #      - destroy_environment_backend
 
@@ -304,9 +299,12 @@ jobs:
 #       - run:
 #           name: Get backend url
 #           command: |
-#             # your code here
-#             export API_URL="http://${BACKEND_IP}:3030"
-#             echo "${API_URL}"
+#             
+                # export BACKEND_IP=$(cat )
+                # export API_URL="http://${BACKEND_IP}:3030"
+                # echo "API_URL = ${API_URL}"
+                # echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
+                # cat frontend/.env
 #       - run:
 #           name: Deploy frontend objects
 #           command: |
