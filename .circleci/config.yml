@@ -166,7 +166,7 @@ jobs:
       
 
       - persist_to_workspace:
-          root: ~/project/
+          root: ~/project
           paths: 
             - inventory.txt
                 
