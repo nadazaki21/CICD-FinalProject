@@ -184,10 +184,13 @@ jobs:
           command: |
            echo "[web]" > ~/project/inventory.txt
            aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> ~/project/inventory.txt
-           aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> inventory.txt
+           
 
       - run: cat ~/project/inventory.txt
-      - run: cat inventory.txt
+      - run: pwd 
+      - run: ls
+      - run: cd ~/project/
+      - run: ls   
   
       
       - destroy_environment_backend
