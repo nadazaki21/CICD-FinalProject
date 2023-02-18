@@ -222,7 +222,7 @@ jobs:
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i inventory.txt .circleci/ansible/roles/configure-server/configure-server.yml
+            ansible-playbook -i inventory.txt .circleci/ansible/roles/configure-server/tasks/configure-server.yml
 
       - destroy_environment_backend
 
@@ -253,6 +253,15 @@ jobs:
             #     fi
             #     curl --insecure  https://kvdb.io/95oHjy4Yvcu4f6gDXNZr6j/migration_$\{CIRCLE_WORKFLOW_ID:0:5}      
 
+          # - restore_cache:
+          # keys: [backend-build]
+        
+        - run:
+          export BACKEND_IP=$(cat )
+          export API_URL="http://${BACKEND_IP}:3030"
+          echo "API_URL = ${API_URL}"
+          echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
+          cat frontend/.env
 
 #      - destroy_environment_backend
 
