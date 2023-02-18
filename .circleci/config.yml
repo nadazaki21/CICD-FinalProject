@@ -166,7 +166,7 @@ jobs:
       
        
       - persist_to_workspace:
-          root: /root/project
+          root: ~/project
 
 
           paths: 
@@ -177,11 +177,11 @@ jobs:
       - run:
           name: Add back-end ip to ansible inventory
           command: |
-           echo "[web]" > /root/project/inventory.txt
-           aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> /root/project/inventory.txt
+           echo "[web]" > ~/project/inventory.txt
+           aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> ~/project/inventory.txt
            aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> inventory.txt
 
-      - run: cat /root/project/inventory.txt
+      - run: cat ~/project/inventory.txt
       - run: cat inventory.txt
   
       
@@ -202,32 +202,39 @@ jobs:
             
             - "55:f3:3d:67:45:24:b3:9f:b8:17:3f:c4:75:fd:e2:07"
       
-      - run: yum install -y tar gzip
+      - run:  sudo apt intsall tar gzip #yum install -y tar gzip
       - run:
           name: Install dependencies
           command: |
-            
-            yum install -y python3 
 
-            python3 -m pip -V
+              sudo apt install python3
+              
+              
+              sudo apt install software-properties-common 
+              sudo add-apt-repository --yes --update ppa:ansible/ansible
+              sudo apt install ansible 
+
+            # yum install -y python3 
+
+            # python3 -m pip -V
             
-            echo " installingg ansible"
+            # echo " installingg ansible"
            
             
-            python3 -m pip install --user ansible
+            # python3 -m pip install --user ansible
         
       - run: ansible --version 
       
       - attach_workspace:
-          at: /root/project
+          at: ~/project
     
-      - run: cat /root/project/inventory.txt
+      - run: cat ~/project/inventory.txt
     
 
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i /root/project/inventory.txt  /root/project/configure-server.yml
+            ansible-playbook -i ~/project/inventory.txt  ~/project/configure-server.yml
 
       - destroy_environment_backend
 
@@ -446,5 +453,4 @@ workflows:
             # sudo ./aws/install
 
 
-            # yum install -y software-properties-common 
-            ##yum-config-manager --add-repo=ppa:ansible/ansible --yes --update 
+            
