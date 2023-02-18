@@ -147,7 +147,7 @@ jobs:
       - image: amazon/aws-cli 
     steps:
       - checkout 
-      - run: pwd
+      
       - run: ls -la
       
       - run:
@@ -164,9 +164,11 @@ jobs:
       - run: pwd
       - run: yum install -y tar gzip
       
-
+      - run: 
       - persist_to_workspace:
-          root: ~/project
+          root: /root/project
+
+
           paths: 
             - inventory.txt
                 
@@ -175,11 +177,11 @@ jobs:
       - run:
           name: Add back-end ip to ansible inventory
           command: |
-           echo "[web]" > ~/project/inventory.txt
-           aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> ~/project/inventory.txt
+           echo "[web]" > /root/project/inventory.txt
+           aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> /root/project/inventory.txt
            aws ec2 describe-instances    --query 'Reservations[*].Instances[*].PublicIpAddress'   --filters "Name=tag:Name,Values=Uda"    --output text >> inventory.txt
 
-      - run: cat ~/project/inventory.txt
+      - run: cat /root/project/inventory.txt
       - run: cat inventory.txt
   
       
@@ -216,9 +218,9 @@ jobs:
       - run: ansible --version 
       
       - attach_workspace:
-          at: ~/project
+          at: /root/project
     
-      - run: cat ~/project/inventory.txt
+      - run: cat /root/project/inventory.txt
     
 
       - run:
