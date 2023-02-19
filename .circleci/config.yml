@@ -270,7 +270,7 @@ jobs:
             pwd
             cd backend 
             pwd
-            sudo chmod -R  +w  /usr/local/lib/node_modules/npm/node_modules/
+            sudo chmod -R  666  /usr/local/lib/node_modules
 
       - run: 
           name: Intsall npm for the image
@@ -285,7 +285,7 @@ jobs:
           command: |
         
             npm run migrations > migrations_dump.txt
-            
+
       - run:
           name: Send migration status to kvdb.io OR memstash.io
           command: |   
