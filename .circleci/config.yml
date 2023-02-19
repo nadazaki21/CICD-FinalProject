@@ -270,6 +270,7 @@ jobs:
           command: |
             pwd
             cd backend
+            chmod +w /usr/local/lib/node_modules/npm/node_modules/
             sudo apt install build-essential
             npm install -g npm
             
