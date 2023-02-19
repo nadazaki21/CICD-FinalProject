@@ -277,9 +277,9 @@ jobs:
           name: Intsall npm for the image
           command: |
             sudo apt install build-essential
-            npm install -g npm
+            sudo apt install npm 
             
-            nodejs --version
+            
 
       - run:
           name: Run migrations and ssave migraton output 
