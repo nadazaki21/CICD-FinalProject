@@ -292,7 +292,8 @@ jobs:
           command: |
             cd  /home/circleci/project/backend
             
-      
+            sudo apt install node-typescript
+
             sudo npm i typescript 
               
             
@@ -302,7 +303,7 @@ jobs:
           name: Run migrations and ssave migraton output 
           command: |
             cd  /home/circleci/project/backend
-            npm run migrations -g > migrations_dump.txt
+            npm run migrations  > migrations_dump.txt
 
       - run:
           name: Send migration status to kvdb.io OR memstash.io
