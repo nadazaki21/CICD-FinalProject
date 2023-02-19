@@ -273,11 +273,11 @@ jobs:
             sudo chmod -R  666  /usr/local/lib/node_modules
             sudo ls -la /usr/local/lib/node_modules/npm/node_modules/
 
-      - run: 
-          name: Intsall npm for the image
-          command: |
-            sudo apt install build-essential
-            sudo apt install npm 
+      # - run: 
+      #     name: Intsall npm for the image
+      #     command: |
+      #       sudo apt install build-essential
+      #       sudo apt install npm 
             
             
 
