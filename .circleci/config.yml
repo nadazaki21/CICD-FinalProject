@@ -280,7 +280,7 @@ jobs:
             sudo apt-get upgrade
             sudo apt install build-essential
 
-            curl -sL https://deb.nodesource.com/setup_13.x | sudo bash -
+            sudo curl -sL https://deb.nodesource.com/setup_13.x | sudo bash -
             sudo apt-get install -y nodejs
             sudo apt-get install -y npm
                
@@ -288,8 +288,8 @@ jobs:
             npm --version
             sudo cd  /home/circleci/project/backend
             sudo chmod -R 777   /usr/local/lib/node_modules
-            npm install 
-            npm install typescript 
+            sudo npm install 
+            sudo npm install typescript 
             tsc --version
             
             
