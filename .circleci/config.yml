@@ -291,10 +291,15 @@ jobs:
           name: Intsall typescript  for the image
           command: |
             cd  /home/circleci/project/backend
+
+            sudo apt-get install apt-utils
             
             sudo apt install node-typescript
 
             sudo npm i typescript 
+            
+            
+            cat   /home/circleci/.npm/_logs/2023-02-19T15_35_31_288Z-debug.log
               
             
             
@@ -303,6 +308,7 @@ jobs:
           name: Run migrations and ssave migraton output 
           command: |
             cd  /home/circleci/project/backend
+            node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build --prod
             npm run migrations  > migrations_dump.txt
 
       - run:
