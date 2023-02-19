@@ -271,7 +271,7 @@ jobs:
             cd backend 
             pwd
             sudo chmod -R  666  /usr/local/lib/node_modules
-            ls -la /usr/local/lib/node_modules/npm/node_modules/
+            sudo ls -la /usr/local/lib/node_modules/npm/node_modules/
 
       - run: 
           name: Intsall npm for the image
