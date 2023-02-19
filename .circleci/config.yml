@@ -67,8 +67,8 @@ jobs:
       - run:
           name: Back-end build
           command: |
-            cd frontend
-            npm install
+            cd backend
+            sudo apt-get install -y npm
             npm run build
       - save_cache:
           paths: [backend/node_modules]
