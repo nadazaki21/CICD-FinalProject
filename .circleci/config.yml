@@ -287,15 +287,15 @@ jobs:
             node --version
             npm --version
 
-       - run: 
+      - run: 
           name: Intsall typescript  for the image
           command: |
             cd  /home/circleci/project/backend
-            sudo chmod -R 777   /usr/local/lib/node_modules
-     
+            
+      
             sudo npm install -g typescript 
             tsc --version
-            
+              
             
             
 
