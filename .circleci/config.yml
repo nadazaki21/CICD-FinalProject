@@ -288,6 +288,8 @@ jobs:
             npm --version
             cd  /home/circleci/project/backend
             npm install 
+            npm install -g typescript 
+            tsc --version
             npm run build 
             
             
