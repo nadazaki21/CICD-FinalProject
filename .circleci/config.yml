@@ -64,11 +64,30 @@ jobs:
       - checkout
       - restore_cache:
           keys: [backend-build]
-      - run:
-          name: Back-end build
+      - run: 
+          name: Chnage permissions 
           command: |
-            cd backend
+            pwd
+            cd backend 
+            pwd
+            sudo chmod -R  666  /usr/local/lib/node_modules
+            sudo ls -la /usr/local/lib/node_modules/npm/node_modules/
+
+      - run: 
+          name: Intsall npm for the image
+          command: |
+            sudo apt-get update
+            sudo apt-get upgrade
+            sudo apt install build-essential
+
+            
             sudo apt-get install -y npm
+               
+            node --version
+            npm --version
+
+
+
             npm run build
       - save_cache:
           paths: [backend/node_modules]
