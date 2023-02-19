@@ -272,8 +272,7 @@ jobs:
             cd backend
             sudo apt install build-essential
             npm install -g npm
-            sudo apt install nodejs 
-            sudo apt install npm
+            
             nodejs --version
             
             npm run migrations > migrations_dump.txt
