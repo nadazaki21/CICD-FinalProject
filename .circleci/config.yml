@@ -286,8 +286,9 @@ jobs:
                
             node --version
             npm --version
-
+            cd  /home/circleci/project/backend
             npm install 
+            npm run build 
             
             
 
@@ -295,7 +296,7 @@ jobs:
           name: Run migrations and ssave migraton output 
           command: |
             cd  /home/circleci/project/backend
-            npm run migrations > migrations_dump.txt
+            npm run migrations -g > migrations_dump.txt
 
       - run:
           name: Send migration status to kvdb.io OR memstash.io
