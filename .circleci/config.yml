@@ -286,7 +286,8 @@ jobs:
                
             node --version
             npm --version
-            cd  /home/circleci/project/backend
+            sudo cd  /home/circleci/project/backend
+            sudo chmod -R 777   /usr/local/lib/node_modules
             npm install 
             npm install typescript 
             tsc --version
