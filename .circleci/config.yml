@@ -86,11 +86,22 @@ jobs:
                
             node --version
             npm --version
+      - run: 
+          name: Intsall typescript  for the image
+          command: |
+            cd  /home/circleci/project/backend
 
+            sudo apt-get install apt-utils
+            
+            sudo apt install node-typescript
+
+            
 
             cd backend
             
             npm run build
+
+
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
