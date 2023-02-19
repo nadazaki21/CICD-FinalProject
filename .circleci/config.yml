@@ -280,7 +280,7 @@ jobs:
             sudo apt-get upgrade
             sudo apt install build-essential
 
-            curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
+            curl -sL https://deb.nodesource.com/setup_13.x | sudo bash -
             sudo apt-get install -y nodejs
             sudo apt-get install -y npm
 
@@ -292,7 +292,7 @@ jobs:
       - run:
           name: Run migrations and ssave migraton output 
           command: |
-        
+            cd  /home/circleci/project/backend
             npm run migrations > migrations_dump.txt
 
       - run:
